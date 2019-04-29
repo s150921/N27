@@ -1,4 +1,4 @@
-# Changelog
+#Changelog
 
 ## 20190225
 
@@ -7,5 +7,6 @@
 ## 20190218
 
 * Favicon eingebaut
-* login ausprogrammiert
-* npm-Module installiert
+* login ausprobiert 
+* npm-module installiert 
+* 

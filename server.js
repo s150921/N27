@@ -1,3 +1,10 @@
+class Konto {
+    constructor() {
+        this.Kontonummer
+        this.Kontoart
+    }
+}
+
 const express = require('express')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
@@ -46,5 +53,64 @@ app.post('/',(req, res, next) => {
         res.cookie('istAngemeldetAls','')
         res.render('login.ejs', {                    
         })
+    }
+})
+// Wenn die Seite localhost:3000/impressum aufgerufen wird, ...
+app.get('/impressum',(req, res, next) => {   
+
+    let idKunde = req.cookies['istAngemeldetAls']
+    
+    if(idKunde){
+        console.log("Kunde ist angemeldet als " + idKunde)
+
+        // ... Dann wird Impressum.ejs gerendert.
+
+        res.render('impressum.ejs', {                              
+        })
+    }else{
+        res.render('login.ejs', {                    
+        })    
+    }
+})
+
+// Wenn die Seite localhost:3000/kontoAnlegen angesurft wird, dann wir kontoAnlegen.ejs gerendert
+
+
+app.get('/kontoAnlegen',(req, res, next) => {   
+
+    let idKunde = req.cookies['istAngemeldetAls']
+    
+    if(idKunde){
+        console.log("Kunde ist angemeldet als " + idKunde)
+
+        // ... Dann wird Impressum.ejs gerendert.
+
+        res.render('kontoAnlegen.ejs', {   
+            meldung : ""                           
+        })
+    }else{
+        res.render('login.ejs', {                    
+        })    
+    }
+})
+
+// Wenn der Button auf der kontoanlegen Seite gedrückt wird, dann wird kontoAnlegen.ejs gerendert.
+
+app.post('/kontoAnlegen',(req, res, next) => {   
+
+    let idKunde = req.cookies['istAngemeldetAls']
+    
+    if(idKunde){
+
+        let konto = new Konto()
+        konto.Kontonummer = req.body.kontonummer
+        konto.Kontoart = req.body.kontoart
+
+        res.render('kontoAnlegen.ejs', {  
+            meldung : "Das "+ konto.Kontoart + " " + konto.Kontonummer + " wurde erfolgreich angelegt."                            
+        })
+    }else{
+        res.render('login.ejs', {                    
+        })    
     }
 })
