@@ -32,12 +32,12 @@
       <a href="mailto:stefan.baeumer@berufskolleg-borken.de"> <i class="fa fa-envelope-o"></i></a>
       <a href="/impressum">Impressum</a>
     </nav>
-    <form method="POST" action="/kontoAnlegen">
+    <form method="POST" action="/kontoAnlegen" >
       <!-- Element, das etwas anzeigt -->
       <label>Kontonummer:</label>
       <p></p>
       <!-- Element vom Typ Text, in das getippt werden kann -->
-      <input type="number" name="kontonummer">
+      <input type="text" name="kontonummer" maxlength= "10" minlength = "10" required >
       <p></p>
       <label>Kontoart:</label>
       <p></p>

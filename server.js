@@ -2,6 +2,7 @@ class Konto {
     constructor() {
         this.Kontonummer
         this.Kontoart
+        
     }
 }
 
@@ -105,12 +106,19 @@ app.post('/kontoAnlegen',(req, res, next) => {
         let konto = new Konto()
         konto.Kontonummer = req.body.kontonummer
         konto.Kontoart = req.body.kontoart
+        const iban = require ('iban')
 
+        const Bankleitzahl = 27272727
+        const laendererkennung = "DE"
+        let errechneteIban = iban.fromBBAN (laendererkennung, Bankleitzahl + " " + req.body.kontonummer)
+        console.log(errechneteIban)
         res.render('kontoAnlegen.ejs', {  
-            meldung : "Das "+ konto.Kontoart + " " + konto.Kontonummer + " wurde erfolgreich angelegt."                            
+            meldung : "Das "+ konto.Kontoart + " mit der Kontonummer " + konto.Kontonummer + " wurde erfolgreich angelegt."                            
         })
     }else{
         res.render('login.ejs', {                    
         })    
     }
 })
+
+    
