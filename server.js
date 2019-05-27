@@ -21,13 +21,11 @@ class Kunde{
 let kunde = new Kunde()
 kunde.IdKunde = 4711
 kunde.Kennwort = "123"
-kunde.Vorname = "Guenther"
-kunde.Nachname = "Musterfrau"
+kunde.Vorname = " Joshua"
+kunde.Nachname = "Schriever"
 kunde.Geschlecht = "m"
-
-
-
-
+kunde.Geburtsdatum = "1999-12-31"
+kunde.Adresse = "dffsmnf"
 
 const iban = require('iban')
 const express = require('express')
@@ -66,11 +64,15 @@ app.get('/login',(req, res, next) => {
 })
 
 app.post('/',(req, res, next) => {   
-    
+
+    // Der Wert des Inputs mit dem name = idkunde wird über den request zugewiesen an die Konstante idKunde
     const idKunde = req.body.idKunde
     const kennwort = req.body.kennwort
+
+    console.log(kunde.IdKunde)
         
-    if(idKunde === kunde.IdKunde && kennwort === kunde.Kennwort){            
+    // Wenn der Wert von IdKunde dem Wert der Eigenschaft kunde.IdKunde entspricht und der Wert vom Kennwort entspricht, dann werden die anweisungen im Rumpf der if-Kontollstruktur abgearbeitet
+    if(idKunde == kunde.IdKunde && kennwort == kunde.Kennwort){            
         console.log("Der Cookie wird gesetzt:")
         res.cookie('istAngemeldetAls', idKunde)
         res.render('index.ejs', {           
@@ -154,3 +156,40 @@ app.post('/kontoAnlegen',(req, res, next) => {
 })
 
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
