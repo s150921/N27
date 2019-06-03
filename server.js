@@ -154,7 +154,50 @@ app.post('/kontoAnlegen',(req, res, next) => {
         })    
     }
 })
+app.get('/stammdatenPflegen',(req, res, next) => {   
 
+    let idKunde = req.cookies['istAngemeldetAls']
+    
+    if(idKunde){
+        console.log("Kunde ist angemeldet als " + idKunde)
+
+        // ... Dann wird Impressum.ejs gerendert.
+
+        res.render('stammdatenPflegen.ejs', {   
+            meldung : ""                           
+        })
+    }else{
+        res.render('login.ejs', {                    
+        })    
+    }
+})
+
+// Wenn der Button auf der kontoanlegen Seite gedrückt wird, dann wird kontoAnlegen.ejs gerendert.
+
+app.post('/stammdatenPflegen',(req, res, next) => {   
+
+    let idKunde = req.cookies['istAngemeldetAls']
+    
+    if(idKunde){
+
+        let kunde = new Konto()
+
+        // Der Wert aus dem Input mit dem Namen 'Kontonummer
+        // wird zugewiesen (=) ab die Eigenschaft Kontonummer des Objekt namens Konto
+        kunde.Nachname = req.body.Nachname
+        kunde.Kennwort = req.body.kennwort
+        
+        
+        res.render('stammdatenPflegen.ejs', {  
+            meldung : "Die Stammdaten wurden geändert."                           
+        })
+    }else{
+        // Die login.ejs wird gerendert und als response an den Browser zurückgegeben
+        res.render('login.ejs', {                    
+        })    
+    }
+})
+    
     
 
 

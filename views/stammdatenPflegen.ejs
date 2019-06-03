@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="de">
+  <!--Unsichtbarer Teil der Webseite-->
+  <!--Grundlegende Einstellungen der Seite-->
+  <head>
+      <link rel="stylesheet" href="styles.css">
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+      <link rel="manifest" href="/site.webmanifest">
+      <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <meta name="msapplication-TileColor" content="#da532c">
+      <meta name="theme-color" content="#ffffff">
+
+
+    <!--Titel der Seite im Browser-Tab-->
+    <title>N27 - Stammdaten</title>
+  </head>
+
+  <!-- Alles, was auf der Seite im Browserfenster angezeigt werden soll, muss im body stehen.-->
+  <body>
+    <center>
+    <header>
+      <h1>Stammdaten bearbeiten</h1>
+    </header>
+     <nav>      
+      <a href="/"><i class="fa fa-home" aria-hidden="true"></i></a>                        
+      <a href="/login">Logout</a>        
+      <a href="mailto:stefan.baeumer@berufskolleg-borken.de"> <i class="fa fa-envelope-o"></i></a>
+      <a href="/impressum">Impressum</a>
+      
+    </nav>
+    <form method="POST" action="/stammdatenPflegen">
+      <!-- Element, das etwas anzeigt -->
+      
+      <p></p>
+      <label>Nachname:</label>
+      <p></p>
+      <input type="text" name="nachname">
+      <!-- Element vom Typ Button, das eine Schaltfläche zeigt -->
+      <p></p>
+  
+      <label>Kennwort:</label>
+      <p></p>
+      <input type="password" name="kennwort">
+ <p></p>
+      
+      <button>Bestätigen</button>
+    </form>
+      <p></p>
+      <label>
+        <%= meldung %>
+      </label>
+      <label>
+      
+      </label>
+
+   
+  </center>     
+  </body>
+</html>
